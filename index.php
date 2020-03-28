@@ -20,15 +20,17 @@
         <form action="">
             <input type="text" id="new_todo" placeholder="what needs to be done?">
         </form>
-        <ul>
+        <ul id="todos">
         <?php foreach($todos as $todo) : ?>
-            <li>
-                <input type="checkbox" <?php if ($todo->state === '1') { echo 'checked'; }?>>
-                <span class="<?php if ($todo->state === '1') { echo 'done'; }?>"><?= h($todo->title); ?></span>
+            <li id="todo_<?= h($todo->id); ?>" data-id="<?= h($todo->id); ?>">
+                <input type="checkbox" class="update_todo" <?php if ($todo->state === '1') { echo 'checked'; }?>>
+                <span class="todo_title <?php if ($todo->state === '1') { echo 'done'; }?>"><?= h($todo->title); ?></span>
                 <div class="delete_todo">×</div>
             </li>
         <?php endforeach; ?>
         </ul>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="todo.js"></script>
 </body>
 </html>
